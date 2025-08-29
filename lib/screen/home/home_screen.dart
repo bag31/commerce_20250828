@@ -1,3 +1,4 @@
+import 'package:commerce_20250828/model/product_model.dart';
 import 'package:commerce_20250828/screen/home/home_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -19,10 +20,14 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   int currentIndex = 0;
 
+  List<ProductModel> newProductList = [
+    ProductModel(AssetPath.productJacketJean, "청자켓", 90000, 31, 4.3, false),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
           SizedBox(
             height: 300,
@@ -38,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          SizedBox(height: 24,),
+          SizedBox(height: 24),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -46,29 +51,37 @@ class _HomeScreenState extends State<HomeScreen> {
               return AnimatedContainer(
                 duration: Duration(milliseconds: 300),
                 height: 10,
-                width: currentIndex == index ? 20 : 10, // 선택되면 20, 아니면 10
+                width: currentIndex == index ? 20 : 10,
+                // 선택되면 20, 아니면 10
                 margin: EdgeInsets.symmetric(horizontal: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: currentIndex == index ? Colors.grey : Colors.grey.shade300,  // 값이 낮을 수록 흐린 색
+                  color: currentIndex == index
+                      ? Colors.grey
+                      : Colors.grey.shade300, // 값이 낮을 수록 흐린 색
                 ),
               );
             }),
           ),
 
-          SizedBox(height: 24,),
+          SizedBox(height: 24),
 
-          HomeWidgets.shortcut(iconList :[
-            AssetPath.jacket,
-            AssetPath.jumper,
-            AssetPath.necklace,
-            AssetPath.bag,
-            AssetPath.cap,
-            AssetPath.skirt,
-            AssetPath.trousers,
-            AssetPath.shirt,
-          ])
+          HomeWidgets.shortcut(
+            iconList: [
+              AssetPath.jacket,
+              AssetPath.jumper,
+              AssetPath.necklace,
+              AssetPath.bag,
+              AssetPath.cap,
+              AssetPath.skirt,
+              AssetPath.trousers,
+              AssetPath.shirt,
+            ],
+          ),
 
+          SizedBox(height: 24),
+          HomeWidgets.subTitle("신제품"),
+          HomeWidgets.productHorizontal(newProductList),
         ],
       ),
     );
