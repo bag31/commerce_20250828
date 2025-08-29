@@ -1,11 +1,10 @@
 import 'package:commerce_20250828/screen/main/main_screen.dart';
+import 'package:commerce_20250828/util/custom_scroll_behavior.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
-
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -14,11 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Commerce SMWU",
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: MainScreen(),
-
+      scrollBehavior: CustomScrollBehavior(),
     );
   }
 }
