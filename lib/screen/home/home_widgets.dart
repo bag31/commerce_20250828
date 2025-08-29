@@ -45,16 +45,24 @@ class HomeWidgets {
     );
   }
 
+  /// Product 모델 5개로 만들기
+  /// ListView.builder에 가로 padding 16 추가
   static Widget productHorizontal(List<ProductModel> dataList) {
     return SizedBox(
       height: 300,
       child: ListView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemCount: dataList.length,
         itemBuilder: (context, index) {
           var productModel = dataList[index];
-          return SizedBox(
+
+          /// index = 0, 1, 2, 3, 4
+          /// dataList.length = 5
+          bool lastIndex = index == dataList.length -1; // index = 마지막 인덱스값이면 true, 아니면 false 반환
+          return Container(
             width: 150,
+            margin: EdgeInsets.only(right: lastIndex ? 0 : 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -69,6 +77,9 @@ class HomeWidgets {
                   productModel.name,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                 ),
+                Text("${productModel.price}원"), // 패키지로 콤마 추가 가능
+                Text("${productModel.reviewRating}(${productModel.reviewCount})"),
+
               ],
             ),
           );

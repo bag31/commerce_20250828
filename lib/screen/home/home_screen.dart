@@ -22,6 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<ProductModel> newProductList = [
     ProductModel(AssetPath.productJacketJean, "청자켓", 90000, 31, 4.3, false),
+    ProductModel(AssetPath.productManJacket, "남자 자켓", 85000, 83, 4.1, false),
+    ProductModel(
+      AssetPath.productManStreet,
+      "남자 스트릿 자켓",
+      89000,
+      41,
+      4.7,
+      false,
+    ),
+    ProductModel(AssetPath.productManSuit, "남자 수트", 100000, 40, 4.5, false),
+    ProductModel(AssetPath.productShoes, "신발", 45000, 21, 3.5, false),
   ];
 
   @override
@@ -82,6 +93,18 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 24),
           HomeWidgets.subTitle("신제품"),
           HomeWidgets.productHorizontal(newProductList),
+
+          /// 이벤트 항목 추가
+          /// subTitle 위젯 사용
+          /// Image.asset 위젯 사용
+          /// AssetPath.event 사용
+          SizedBox(height: 24),
+          HomeWidgets.subTitle("이벤트"),
+          SizedBox(
+            height: 200,
+            width: double.infinity,
+            child: Image.asset(AssetPath.event, fit: BoxFit.cover),
+          ),
         ],
       ),
     );
